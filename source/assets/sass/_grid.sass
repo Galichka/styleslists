@@ -1,0 +1,25 @@
+// .wrapper
+//   max-width: $contentWidth
+//   margin: 0 auto
+//   padding: 0 $gap/2
+.column
+  padding: 0 $gap/2
+  width: 100%
+.row
+  display: flex
+  flex-wrap: wrap
+  margin:
+    left: $gap/2 * -1
+    right: $gap/2 * -1
+.column-1-2
+    max-width: 50%
+
+@each $breakpoint in $breakpoints
+  $key: nth($breakpoint, 1)
+  $value: nth($breakpoint, 2)
+  @media ($value * 1px)
+    @each $break in $breaks
+      $first: nth($break, 1)
+      $second: nth($break, 2)
+      .column-#{$key}-#{$first}-#{$second}
+        max-width: (100% * $first / $second)  
